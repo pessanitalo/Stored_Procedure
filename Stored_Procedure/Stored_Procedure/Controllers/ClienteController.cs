@@ -1,8 +1,6 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Stored_Procedure.Context;
-using System.Linq;
 
 namespace Consultas_SQL.Controllers
 {
@@ -77,7 +75,7 @@ namespace Consultas_SQL.Controllers
         [HttpGet("/intervalo")]
         public IActionResult intervalo(DateTime dataInicio, DateTime dataFim)
         {
-            //1987-04-28
+            //1987 - 04 - 28
             var filtro = _context.Pessoas.FromSql($"Select * from pessoas where DataNascimento BETWEEN {dataInicio} and {dataFim}");
             return Ok(filtro);
         }
