@@ -32,7 +32,7 @@ namespace Consultas_SQL.Controllers
         [HttpGet("/procedurePesquisaNome")]
         public IActionResult pesquisa(string @Nome)
         {
-            var clientes = _context.Pessoas.FromSqlRaw($"EXEC PesquisarPessoaNome3 @Nome = {@Nome}");
+            var clientes = _context.Pessoas.FromSqlRaw($"EXEC PesquisarPessoaNome @Nome = {@Nome}");
             return Ok(clientes);
         }
     }
