@@ -52,3 +52,19 @@ exec PesquisarPessoaNome @Nome = 'ana duimoulin'
 
 create procedure BuscaId (@ID INT) AS select * from dbo.Pessoas where Id = @ID
 exec BuscaId 2
+
+CREATE PROCEDURE p_numeros
+    @min AS INT,
+    @max AS INT
+AS
+BEGIN
+    SELECT *
+    FROM Enderecos
+    WHERE Numero > @min AND Numero < @max
+end
+
+exec p_numeros @min = 360, @max = 541
+
+create procedure onenumber (@numero int) as select * from Enderecos where Numero = @numero
+
+exec onenumber 360
