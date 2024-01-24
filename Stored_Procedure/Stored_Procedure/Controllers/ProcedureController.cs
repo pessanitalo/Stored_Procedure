@@ -35,5 +35,19 @@ namespace Consultas_SQL.Controllers
             var clientes = _context.Pessoas.FromSqlRaw($"EXEC PesquisarPessoaNome @Nome = {@Nome}");
             return Ok(clientes);
         }
+
+        [HttpGet("/oneNumeros")]
+        public IActionResult oneNumeros(int @numero)
+        {
+            var clientes = _context.Enderecos.FromSqlRaw($"EXEC onenumber @numero = {@numero}");
+            return Ok(clientes);
+        }
+
+        [HttpGet("/intervaloNumeros")]
+        public IActionResult pesquisa(int @min, int @max)
+        {
+            var clientes = _context.Enderecos.FromSqlRaw($"EXEC p_numeros @min = {@min}, @max ={@max}");
+            return Ok(clientes);
+        }
     }
 }
