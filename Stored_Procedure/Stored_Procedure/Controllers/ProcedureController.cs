@@ -44,9 +44,16 @@ namespace Consultas_SQL.Controllers
         }
 
         [HttpGet("/intervaloNumeros")]
-        public IActionResult pesquisa(int @min, int @max)
+        public IActionResult intervaloNumeros(int @min, int @max)
         {
             var clientes = _context.Enderecos.FromSqlRaw($"EXEC p_numeros @min = {@min}, @max ={@max}");
+            return Ok(clientes);
+        }
+
+        [HttpPost("/post")]
+        public IActionResult insert(string @Logradouro, string @cep, string @bairro, int @numero, string @mun)
+        {
+            var clientes = _context.Enderecos.FromSqlRaw($"EXEC intertEndereco1 @Logradouro = {@Logradouro}, @cep ={@cep}, @bairro = {@bairro}, @numero = {@numero}, @mun = {@mun}");
             return Ok(clientes);
         }
     }
